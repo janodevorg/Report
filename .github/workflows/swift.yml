@@ -25,3 +25,6 @@ jobs:
       - name: Build macCatalyst
         run: |
           set -o pipefail && xcodebuild test -scheme "Report-Package" -destination "platform=macOS,arch=arm64,variant=Mac Catalyst" -skipPackagePluginValidation | xcpretty
+      - name: Build tvOS
+        run: |
+          set -o pipefail && xcodebuild test -scheme "Report-Package" -destination "platform=tvOS Simulator,name=Apple TV 4K (3rd generation)" -skipPackagePluginValidation | xcpretty

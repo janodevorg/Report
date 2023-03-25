@@ -6,7 +6,8 @@ let package = Package(
     platforms: [
         .iOS(.v14),
         .macCatalyst(.v14),
-        .macOS(.v12)
+        .macOS(.v12),
+        .tvOS(.v14)
     ],
     products: [
         .library(name: "Report", type: .static, targets: ["Report"]),
