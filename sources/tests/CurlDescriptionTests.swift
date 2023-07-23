@@ -4,7 +4,7 @@ import XCTest
 final class CurlDescriptionTests: XCTestCase
 {
     let urlString = "https://httpbin.org/get"
-    lazy var url = URL(string: urlString)!
+    lazy var url = URL(string: urlString)! // swiftlint:disable:this force_unwrapping
     lazy var urlRequest = URLRequest(url: url)
 
     func testGET() throws
@@ -21,12 +21,12 @@ final class CurlDescriptionTests: XCTestCase
     
     /// Returns single lines without linebreaks or trailing back slashes
     private func cURLCommandLines(from cURLString: String) -> [String] {
-        return cURLString.components(separatedBy: " \\\n")
+        cURLString.components(separatedBy: " \\\n")
     }
     
     /// Returns each component of the bash command, e.g. "-X GET" --> "-X" "GET".
     private func cURLCommandComponents(from cURLString: String) -> [String] {
-        return cURLString.components(separatedBy: .whitespacesAndNewlines)
-            .filter { $0 != "" && $0 != "\\" }
+        cURLString.components(separatedBy: .whitespacesAndNewlines)
+            .filter { !$0.isEmpty && $0 != "\\" }
     }
 }

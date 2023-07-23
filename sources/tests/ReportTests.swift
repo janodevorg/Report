@@ -1,5 +1,5 @@
-@testable import Report
 import os
+@testable import Report
 import XCTest
 
 final class ReportTests: XCTestCase
@@ -8,7 +8,7 @@ final class ReportTests: XCTestCase
 
     func testRequest() throws
     {
-        let url = URL(string: "https://www.google.com")!
+        let url = URL(string: "https://www.google.com")! // swiftlint:disable:this force_unwrapping
         var request = URLRequest(url: url)
         request.allHTTPHeaderFields = [
             "Host": "developer.mozilla.org",
