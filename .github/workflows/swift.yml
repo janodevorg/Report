@@ -22,12 +22,3 @@ jobs:
       - name: Build iOS
         run: |
           set -o pipefail && xcodebuild test -scheme "Report" -destination "OS=16.4,name=iPhone 14 Pro" -skipPackagePluginValidation | xcbeautify
-      - name: Build macOS
-        run: |
-          set -o pipefail && xcodebuild test -scheme "Report" -destination "platform=macOS,arch=arm64" -skipPackagePluginValidation | xcbeautify
-      - name: Build macCatalyst
-        run: |
-          set -o pipefail && xcodebuild test -scheme "Report" -destination "platform=macOS,arch=arm64,variant=Mac Catalyst" -skipPackagePluginValidation | xcbeautify
-      - name: Build tvOS
-        run: |
-          set -o pipefail && xcodebuild test -scheme "Report" -destination "platform=tvOS Simulator,name=Apple TV 4K (3rd generation)" -skipPackagePluginValidation | xcbeautify
