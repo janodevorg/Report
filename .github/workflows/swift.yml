@@ -10,9 +10,15 @@ name: Swift
 on: [push]
 jobs:
   ios-latest:
-    name: Unit Tests (iOS 16.2, Xcode 14.2)"
+    name: Unit Tests (iOS 16.4, Xcode 14.3)
+    runs-on: [self-hosted]
+    env: 
+      DEVELOPER_DIR: /Applications/Xcode.app/Contents/Developer
     steps:
       - uses: actions/checkout@v3
+      - name: Generate project
+        run: |
+          xcodegen
       - name: Build iOS
         run: |
           set -o pipefail && xcodebuild test -scheme "Report-Package" -destination "OS=16.4,name=iPhone 14 Pro" -skipPackagePluginValidation | xcbeautify
